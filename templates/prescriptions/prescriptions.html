@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block head_block %}
+
+{% endblock  %}
+{% block body_block %}
+          <!-- Content wrapper -->
+          <div class="content-wrapper">
+            <!-- Content -->
+
+            <div class="container-xxl flex-grow-1 container-p-y">
+              <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">PHR /</span> Prescription</h4>
+              <div class="card mb-4">
+                <form method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                <div class="card-body">
+                  <div class="demo-inline-spacing">
+                    <button type="submit" class="btn rounded-pill btn-info">Save</button>
+                    <button type="button" class="btn rounded-pill btn-secondary">Edit</button>
+                    <button type="button" class="btn rounded-pill btn-primary">Refresh</button>
+                    <a href="/view_prescription" class="btn rounded-pill btn-warning"><i class='bx bxs-hand-up'></i>&nbsp;View</a>
+                    </div>
+                    <br>
+                    <div class="row">
+                      <div class="col mb-3">
+                        <label for="exampleFormControlInput1" class="form-label">Document Type</label>
+                        <select class="form-select" name="doc_type" id="doc_type">
+                            <option value="">Select</option>
+                            {% for data in doc_type %}
+                            <option value="{{data.id}}">{{data.name}}</option>
+                            {% endfor %}
+                        </select>
+                      </div>
+                      <div class="col mb-3">
+                        <label for="exampleFormControlInput1" class="form-label">Purpose</label>
+                        <select class="form-select" name="purpose" id="purpose">
+                            <option value="">Select</option>
+                            {% for data in purpose %}
+                            <option value="{{data.id}}">{{data.name}}</option>
+                            {% endfor %}
+                        </select>
+                      </div>
+                      <div class="col mb-3">
+                        <label for="exampleFormControlInput1" class="form-label">Doctor Name</label>
+                        <input type="text" name="doctor_name" id="doctor_name" class="form-control">
+                      </div>
+                      <div class="col mb-3">
+                        <label for="exampleFormControlInput1" class="form-label">Hospital Name</label>
+                        <select class="form-select" name="hospital_name" id="hospital_name">
+                          <option value="">Select</option>
+                          {% for data in hospital %}
+                          <option value="{{data.id}}">{{data.hospital_name}}</option>
+                          {% endfor %}
+                      </select>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col mb-3">
+                        <label class="btn-text">Document</label>
+                        <input name="document" class="form-control" type="file" onchange="loadFile(event)"/>
+                      </div>
+                      </div>
+                </div>
+            </form>
+              </div>
+            </div>
+            <!-- / Content -->
+            <script>
+                var loadFile = function (event) {
+          var image = document.getElementById("output");
+          image.src = URL.createObjectURL(event.target.files[0]);
+          };
+          
+            </script>
+            {% endblock %}

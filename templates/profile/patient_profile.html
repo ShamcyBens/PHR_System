@@ -1,0 +1,144 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block head_block %}
+
+{% endblock  %}
+{% block body_block %}
+          <!-- Content wrapper -->
+          <div class="content-wrapper">
+            <!-- Content -->
+
+            <div class="container-xxl flex-grow-1 container-p-y">
+              <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Profile /</span>Patient Profile</h4>
+              <div class="card mb-4">
+                <form method="POST">
+                    {% csrf_token %}
+                <div class="card-body">
+                    <div class="demo-inline-spacing">
+                    <button type="button" class="btn rounded-pill btn-warning" data-bs-toggle="modal"
+                    data-bs-target="#modalCenter">Add</button>
+                    <button type="submit" class="btn rounded-pill btn-info">Save</button>
+                    <button type="button" class="btn rounded-pill btn-secondary">Edit</button>
+                    <button type="button" class="btn rounded-pill btn-primary">Refresh</button>
+                    </div>
+                    <br>
+                        <div class="row">
+                          <div class="col mb-3">
+                            <label for="exampleFormControlInput1" class="form-label">Title</label>
+                            <select class="form-select" name="title">
+                                <option>Mr.</option>
+                                <option>Ms.</option>
+                                <option>Mrs.</option>
+                            </select>
+                          </div>
+                          <div class="col mb-3">
+                            <label for="exampleFormControlInput1" class="form-label">First Name</label>
+                            <input type="text" name="first_name" class="form-control">
+                          </div>
+                          <div class="col mb-3">
+                            <label for="exampleFormControlInput1" class="form-label">Middle Name</label>
+                            <input type="text" name="middle_name" class="form-control">
+                          </div>
+                          <div class="col mb-3">
+                            <label for="exampleFormControlInput1" class="form-label">Last Name</label>
+                            <input type="text" name="last_name" class="form-control">
+                          </div>
+                        </div>
+                        <div class="row">
+                            <div class="col mb-3">
+                              <label for="exampleFormControlInput1" class="form-label">Age</label>
+                              <input type="text" name="age" class="form-control">
+                            </div>
+                            <div class="col mb-3">
+                              <label for="exampleFormControlInput1" class="form-label">DOB</label>
+                              <input type="date" name="dob" class="form-control">
+                            </div>
+                            <div class="col mb-3">
+                              <label for="exampleFormControlInput1" class="form-label">Gender</label>
+                              <select name="gender" class="form-select">
+                                <option value="Male">Male</option>
+                                <option value="Female">Female</option>
+                                <option value="Other">Other</option>
+                              </select>
+                            </div>
+                            <div class="col mb-3">
+                              <label for="exampleFormControlInput1" class="form-label">Blood Group</label>
+                              <select name="blood_group" class="form-select">
+                                <option value="NA">N/A</option>
+                                <option value="A">O+</option>
+                                <option value="B">O-</option>
+                                <option value="C">A+</option>
+                                <option value="C">A-</option>
+                                <option value="C">B+</option>
+                                <option value="C">B-</option>
+                                <option value="C">AB+</option>
+                                <option value="C">AB-</option>
+                              </select>
+                            </div>
+                          </div>
+
+                          <div class="row">
+                            <div class="col mb-3">
+                              <label for="exampleFormControlInput1" class="form-label">Marital Status</label>
+                              <select name="marital_status" class="form-select">
+                                <option value="Married ">Married</option>
+                                <option value="Unmarried">Unmarried</option>
+                              </select>
+                            </div>
+                            <div class="col mb-3">
+                              <label for="exampleFormControlInput1" class="form-label">Father's/Husband Name</label>
+                              <input type="text" name="father_name" class="form-control">
+                            </div>
+                            <div class="col mb-3">
+                              <label for="exampleFormControlInput1" class="form-label">Mobile No</label>
+                              <input type="text" name="mobile_number" class="form-control">
+                            </div>
+                            <div class="col mb-3">
+                              <label for="exampleFormControlInput1" class="form-label">Email ID</label>
+                              <input type="text" name="email_id" class="form-control">
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="col mb-3">
+                              <label for="exampleFormControlInput1" class="form-label">Address</label>
+                              <input type="text" name="address" class="form-control">
+                            </div>
+                            <div class="col mb-3">
+                              <label for="exampleFormControlInput1" class="form-label">Country</label>
+                              <input type="text" name="country" class="form-control">
+                            </div>
+                            <div class="col mb-3">
+                              <label for="exampleFormControlInput1" class="form-label">State</label>
+                              <input type="text" name="state" class="form-control">
+                            </div>
+                            <div class="col mb-3">
+                              <label for="exampleFormControlInput1" class="form-label">City</label>
+                              <input type="text" name="city" class="form-control">
+                            </div>
+                            
+                          </div>
+                          <div class="row">
+                            <div class="col mb-3">
+                                <label for="exampleFormControlInput1" class="form-label">Pin-Code</label>
+                                <input type="text" name="pin_code" class="form-control">
+                              </div>
+                            <div class="col mb-4">
+                              <label for="exampleFormControlInput1" class="form-label">Photo Upload</label>
+                              <input name="profile_photo" class="form-control" type="file" onchange="loadFile(event)"/>
+                            </div>
+                            <div class="col mb-3"></div>
+                            <div class="col mb-2"></div>
+                          </div>
+                </div>
+            </form>
+              </div>
+            </div>
+            <!-- / Content -->
+            <script>
+                var loadFile = function (event) {
+          var image = document.getElementById("output");
+          image.src = URL.createObjectURL(event.target.files[0]);
+          };
+          
+            </script>
+            {% endblock %}
